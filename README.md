@@ -144,27 +144,27 @@ classDiagram
 
 ```mermaid
 graph LR
-    subgraph "EnrichableEntity"
-        EE_METHOD[GetType() string]
+    subgraph EE["EnrichableEntity"]
+        EE_METHOD["GetType() string"]
     end
-    
-    subgraph "Handler&lt;E&gt;"
-        H_HANDLE[Handle(entity E) E, error]
-        H_SETNEXT[SetNext(nextHandler Handler&lt;E&gt;)]
+
+    subgraph HD["Handler#lt;E#gt;"]
+        H_HANDLE["Handle(entity E) E, error"]
+        H_SETNEXT["SetNext(nextHandler Handler#lt;E#gt;)"]
     end
-    
-    subgraph "Core Methods"
-        PROCESS[Process abstract method]
-        ENRICH[Enrich abstract method]
-        VALIDATE[Validate abstract method]
+
+    subgraph CM["Core Methods"]
+        PROCESS["Process abstract method"]
+        ENRICH["Enrich abstract method"]
+        VALIDATE["Validate abstract method"]
     end
-    
+
     EE_METHOD --> H_HANDLE
     H_HANDLE --> PROCESS
     H_SETNEXT --> PROCESS
     PROCESS --> ENRICH
     PROCESS --> VALIDATE
-    
+
     style EE_METHOD fill:#e1f5fe
     style H_HANDLE fill:#e8f5e8
     style H_SETNEXT fill:#e8f5e8
